@@ -42,9 +42,14 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        $product = new Product();
+
+        $product->product_name = $req->product_name;
+        $product->category = $req->category;
+        $product->unit_price = $req->unit_price;
+        $product->status = $req->status;
     }
 
     /**

@@ -44,3 +44,4 @@ Route::get('/system/product_management', [ProductController::class, 'index']);
 Route::get('/system/product_management/existing_product', [ProductController::class, 'existing'])->name('product.existing');
 Route::get('/system/product_management/upcoming_product', [ProductController::class, 'upcoming'])->name('product.upcoming');
 Route::get('/system/product_managementadd_product', [ProductController::class, 'create'])->name('product.add');
+Route::post('/system/product_managementadd_product', [ProductController::class, 'store']);
