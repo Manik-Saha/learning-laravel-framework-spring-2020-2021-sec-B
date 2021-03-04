@@ -11,6 +11,7 @@
 <body>
     <h1>Add new product</h1>
     <form method="post">
+    @csrf
         <fieldset>
             <legend>add new product</legend>
             <table>

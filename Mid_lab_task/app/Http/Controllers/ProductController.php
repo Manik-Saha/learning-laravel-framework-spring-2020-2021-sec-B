@@ -18,11 +18,13 @@ class ProductController extends Controller
     }
 
     public function existing(){
-        return view('product.existing');
+        $product = Product::all();
+        return view('product.existing')->with('list', $product);
     }
 
     public function upcoming(){
-        return view('product.upcoming');
+        $product = Product::all();
+        return view('product.upcoming')->with('list', $product);
     }
 
 
@@ -44,12 +46,18 @@ class ProductController extends Controller
      */
     public function store(Request $req)
     {
+        $date = date('Y-m-d H:i:s');
+        
         $product = new Product();
 
         $product->product_name = $req->product_name;
         $product->category = $req->category;
         $product->unit_price = $req->unit_price;
         $product->status = $req->status;
+        $product->updated_at = $date;
+
+        $product->save();
+        return view('product.index');
     }
 
     /**
