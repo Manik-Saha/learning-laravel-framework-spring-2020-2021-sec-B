@@ -6,37 +6,57 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller{
     public function index(){
 
         return view('login.index');
     }
 
-    public function verify(Request $req){
+    public function verify(UserRequest $req){
 
-        $user = DB::table('user_table')
-                    ->where('password', $req->password)
-                    ->where('username', $req->username)
-                    ->get();
+        $admin = DB::table('admin')
+                ->where('password', $req->password)
+                ->where('email', $req->email)
+                ->get();
+        $customer = DB::table('customers')
+                           ->where('password', $req->password)
+                           ->where('email', $req->email)
+                           ->get();
+       $vendor = DB::table('vendor')
+                           ->where('password', $req->password)
+                           ->where('email', $req->email)
+                           ->get();
+        $accoutant = DB::table('accoutant')
+                                      ->where('password', $req->password)
+                                      ->where('email', $req->email)
+                                      ->get();
 
-        if($req->username == "" || $req->password == ""){
+        if($req->email == "" || $req->password == ""){
            $req->session()->flash('msg', 'null username or password...');
            return redirect('/login');
 
-        }elseif(count($user) > 0 ){
+        }
+        elseif(count($customer) > 0 ){
+            $req->session()->put('email', $req->email);
+            return redirect()->route('customers.dashboard');
+               
+        }
+        elseif(count($admin) > 0 ){
+            $req->session()->put('email', $req->email);
+            return redirect()->route('admin.dashboard');
 
-             $req->session()->put('username', $req->username);
-            //  $role = $user->role;
-            //  if(role == "admin"){
-            //     return redirect('/admin');
-            //  }
-            //  else{
-            //      return redirect('/customer');
-            //  }
-            return redirect('/system/sales');   
-        }else{
+        }
+        elseif(count($vendor) > 0 ){
+            $req->session()->put('email', $req->email);
+            return redirect()->route('vendor.dashboard');
+               
+        }
+        elseif(count($accoutant) > 0 ){
+            $req->session()->put('email', $req->email);
+            return redirect()->route('accoutant.dashboard');
 
+        }
+        else{
             $req->session()->flash('msg', 'Invalid username or password...');
             return redirect('/login');
         }

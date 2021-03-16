@@ -27,7 +27,7 @@ class RegistrationRequest extends FormRequest
             'fullname' => 'require|min:3|max:30|alpha|bail',
             'username' => 'required|max:50|bail',
             'password' => 'required|min:8|max:20|alpha-numeric|bail',
-            'email' => 'required|min:10|max:50|rfc,dns|bail',
+            'email' => 'required|min:10|max:50|email:rfc,dns|bail',
             'city' => 'required|min:3|max:20|bail',
             'country' => 'required|min:3|max:20|bail',
             'phone' => 'required|min:11|max:15|bail',
