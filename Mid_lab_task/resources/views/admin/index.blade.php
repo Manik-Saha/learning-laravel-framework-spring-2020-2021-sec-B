@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>admin</h1>
+    <a href="/system/product_management">Product Management</a>
+<br><br>
     <a href="/logout">Logout</a>
+
 </body>
 </html>

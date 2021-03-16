@@ -38,16 +38,21 @@ Route::post('/registration', [RegistrstionController::class, 'store']);
 Route::group(['middleware'=> 'session'], function(){
     Route::get('/admin',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('/customer', [CustomerController::class, 'index'])->name('customer.dashboard');
-    Route::get('/vendor', [CustomerController::class, 'index'])->name('vendor.dashboard');
-    Route::get('/accoutant', [CustomerController::class, 'index'])->name('accoutant.dashboard');
+    Route::get('/vendor', [VendorController::class, 'index'])->name('vendor.dashboard');
+    Route::get('/accoutant', [AccoutantController::class, 'index'])->name('accoutant.dashboard');
 
     Route::get('/system/sales', [SalesController::class, 'index']);
+    Route::get('/system/sales/physical_store', [SalesController::class, 'physicalStore']);
     Route::get('/system/sales/physical_store', [SalesController::class, 'physicalStore']);
     Route::get('/system/sales/social_media', [SalesController::class, 'socialMedia']);
     Route::get('/system/sales/ecommerce', [SalesController::class, 'ecommerce']);
     
     Route::get('/system/product_management', [ProductController::class, 'index']);
     Route::get('/system/product_management/existing_product', [ProductController::class, 'existing'])->name('product.existing');
+    Route::get('/system/product_management/existing_product/edit/{id}', [ProductController::class, 'edit']);
+    Route::get('/system/product_management/existing_product/delete/{id}', [ProductController::class, 'delete']);
+    Route::get('/system/product_management/existing_product/delete/{id}', [ProductController::class, 'delete']);
+    Route::post('system/product_management/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class, 'details']);
     Route::get('/system/product_management/upcoming_product', [ProductController::class, 'upcoming'])->name('product.upcoming');
     Route::get('/system/product_management/add_product', [ProductController::class, 'create'])->name('product.add');
     Route::post('/system/product_management/add_product', [ProductController::class, 'store']);

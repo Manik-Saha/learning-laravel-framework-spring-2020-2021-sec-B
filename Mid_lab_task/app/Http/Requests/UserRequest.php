@@ -24,18 +24,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|max:50|rfc,dns|bail',
+            'email' => 'required|max:50|email:rfc,dns|bail',
             'password' => 'required|min:8|max:20|bail',
         ];
     }
 
-    public function messages(){
-        return [
-
-            'username.required' => "can't left empty...",
-            'username.max' => "username length can't be more than 50...",
-            'password.required' =>"can't left empty...",
-            'password.min' =>"Password minimum length should be 8...",
-        ];
-    }
 }

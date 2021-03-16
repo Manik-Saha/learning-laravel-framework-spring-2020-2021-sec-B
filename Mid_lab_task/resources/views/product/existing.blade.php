@@ -13,6 +13,9 @@
     <a href="/logout">Logout</a>
     <table border="1">
         <tr>
+        <td>Edit</td>
+        <td>Details</td>
+        <td>Delete</td>
             <td>product ID</td>
             <td>Product name</td>
             <td>Category</td>
@@ -22,6 +25,9 @@
         </tr>
         @for($i=0; $i < count($list); $i++) <tr>
            @if($list[$i]['status']=='Existing')
+           <a href="{{ route('sales.edit', [$list[$i]['product_id']]) }}">Edit</a> |
+        <a href="{{ route('sales.details', [$list[$i]['product_id']]) }}">Edit</a> |
+        <a href="{{ route('sales.delete', [$list[$i]['product_id']]) }}">Edit</a> |
             <td>{{$list[$i]['pruduct_id']}}</td>
             <td>{{$list[$i]['product_name']}}</td>
             <td>{{$list[$i]['category']}}</td>

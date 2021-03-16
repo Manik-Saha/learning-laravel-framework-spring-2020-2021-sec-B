@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sales extends Model
+class socialMedia extends Model
 {
-    //use HasFactory;
     protected $table = 'social_media_channel';
     public $timestamps = false;
     protected $primaryKey = 'product_id';

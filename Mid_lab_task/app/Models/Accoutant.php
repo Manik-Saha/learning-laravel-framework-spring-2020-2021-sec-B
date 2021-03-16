@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Accoutant extends Model
 {
-    use HasFactory;
+    protected $table = 'acccoutant';
+    public $timestamps = false;
+    protected $primaryKey = 'user_id';
 }

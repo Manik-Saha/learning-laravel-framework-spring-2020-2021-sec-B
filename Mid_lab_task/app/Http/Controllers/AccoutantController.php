@@ -14,7 +14,7 @@ class AccoutantController extends Controller
      */
     public function index()
     {
-        //
+        return view('accoutant.index');
     }
 
     /**

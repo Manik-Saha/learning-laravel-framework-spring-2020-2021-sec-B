@@ -13,9 +13,9 @@
     <br><br>
     <div>
         <nav>
-            <a href="{{route('product.existing')}}"> Existing product</a>
-            <a href="{{route('product.upcoming')}}"> Upcoming product</a>
-            <a href="{{route('product.add')}}"> Add new product</a>
+            <a href="{{route('product.existing')}}"> Existing product</a><br>
+            <a href="{{route('product.upcoming')}}"> Upcoming product</a><br>
+            <a href="{{route('product.add')}}"> Add new product</a><br>
         </nav>
     </div>
 </body>

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vendor extends Model
 {
-    use HasFactory;
+    protected $table = 'vendor';
+    public $timestamps = false;
+    protected $primaryKey = 'user_id';
 }

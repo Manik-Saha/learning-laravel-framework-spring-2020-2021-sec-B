@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sales;
 use App\Models\ecommerce;
-use App\Http\Models\socialMedia;;
+use App\Models\socialMedia;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller

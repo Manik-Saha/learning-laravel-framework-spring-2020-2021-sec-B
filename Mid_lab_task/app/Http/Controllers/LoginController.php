@@ -19,17 +19,17 @@ class LoginController extends Controller{
                 ->where('email', $req->email)
                 ->get();
         $customer = DB::table('customers')
-                           ->where('password', $req->password)
-                           ->where('email', $req->email)
-                           ->get();
+                    ->where('password', $req->password)
+                    ->where('email', $req->email)
+                    ->get();
        $vendor = DB::table('vendor')
-                           ->where('password', $req->password)
-                           ->where('email', $req->email)
-                           ->get();
+                ->where('password', $req->password)
+                ->where('email', $req->email)
+                ->get();
         $accoutant = DB::table('accoutant')
-                                      ->where('password', $req->password)
-                                      ->where('email', $req->email)
-                                      ->get();
+                    ->where('password', $req->password)
+                    ->where('email', $req->email)
+                    ->get();
 
         if($req->email == "" || $req->password == ""){
            $req->session()->flash('msg', 'null username or password...');
@@ -42,6 +42,7 @@ class LoginController extends Controller{
                
         }
         elseif(count($admin) > 0 ){
+            print_r($admin);
             $req->session()->put('email', $req->email);
             return redirect()->route('admin.dashboard');
 

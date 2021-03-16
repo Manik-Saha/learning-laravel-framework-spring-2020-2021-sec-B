@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     /**
@@ -77,9 +79,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('product.edit')->with('list', $product);
     }
 
     /**
@@ -100,8 +103,22 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+    public function delete($id){
+        $product = Product::find($id);
+        return view('product.delete')->with('list', $product);
+    }
+
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function details($product_id,$vendor_id){
+        $list = DB::table('product')
+                ->join('vendor', 'product.product_id', '=', 'vendor.product_id')
+                ->select('product.*', 'vendor.*')
+                ->get();
+         return view('product.delete')->with('list', $list);
+
     }
 }
