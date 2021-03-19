@@ -10,11 +10,10 @@
 
 <body>
     <h1>Product management page</h1>
-    <br><br>
     <div>
         <nav>
-            <a href="{{route('product.existing')}}"> Existing product</a><br>
-            <a href="{{route('product.upcoming')}}"> Upcoming product</a><br>
+            <a href="{{route('product.existing')}}"> Existing product</a><br><br>
+            <a href="{{route('product.upcoming')}}"> Upcoming product</a><br><br>
             <a href="{{route('product.add')}}"> Add new product</a><br>
         </nav>
     </div>

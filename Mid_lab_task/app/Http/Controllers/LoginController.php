@@ -38,7 +38,7 @@ class LoginController extends Controller{
         }
         elseif(count($customer) > 0 ){
             $req->session()->put('email', $req->email);
-            return redirect()->route('customers.dashboard');
+            return redirect()->route('customer.dashboard');
                
         }
         elseif(count($admin) > 0 ){

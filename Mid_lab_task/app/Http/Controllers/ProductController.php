@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductEditRequest;
 
 use Illuminate\Support\Facades\DB;
 
@@ -46,20 +47,29 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
+    public function store($product_id, ProductEditRequest $req)
     {
-        $date = date('Y-m-d H:i:s');
+
+        if($req->unit_price <=0){
+            $req->session()->flash('msg', 'Unit price must be greater than 0');
+            return redirect()->route('product.existing.edit',$product_id);
+        }
+        else{
+            $date = date('Y-m-d H:i:s');
         
-        $product = new Product();
+            $product = Product::find($product_id);
+    
+            $product->product_name = $req->product_name;
+            $product->category = $req->category;
+            $product->unit_price = $req->unit_price;
+            $product->status = $req->status;
+            $product->updated_at = $date;
+    
+            $product->save();
+            $req->session()->flash('msg', 'updated successfully');
+            return redirect()->route('product.existing.edit',$product_id);
+        }
 
-        $product->product_name = $req->product_name;
-        $product->category = $req->category;
-        $product->unit_price = $req->unit_price;
-        $product->status = $req->status;
-        $product->updated_at = $date;
-
-        $product->save();
-        return view('product.index');
     }
 
     /**

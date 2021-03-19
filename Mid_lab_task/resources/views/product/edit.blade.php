@@ -9,7 +9,13 @@
 </head>
 
 <body>
+<p style="color: red; font-size: 15px;"> @foreach($errors->all() as $err)
+		{{$err}} <br>
+	@endforeach </p>
+
+    <p style="color: red; font-size: 15px;">{{session('msg')}}</p>
     <form method="post">
+    @csrf 
         <table>
             <tr>
                 <td>
@@ -19,22 +25,27 @@
                     <input type="text" name="product_name" value="{{ $list['product_name'] }}">
                 </td>
             </tr>
-                <td>unit_price :</td>
-                <td><input type="text" name="unit_price" value="{{ $list['unit_price'] }}"></td>
+            <td>unit_price :</td>
+            <td><input type="text" name="unit_price" value="{{ $list['unit_price'] }}"></td>
             </tr>
             <tr>
                 <td>status</td>
                 <td>
-                <select name='status'>
-							<option value="Upcoming" @if($list['status'] == 'Upcoming') selected @endif >Upcoming</option> 
-							<option value="Existing"  @if($list['status'] == 'Existing') selected @endif > Existing </option>
-						</select>
+                    <select name='status'>
+                        <option value="Upcoming" @if($list['status']=='Upcoming' ) selected @endif>Upcoming</option>
+                        <option value="Existing" @if($list['status']=='Existing' ) selected @endif> Existing </option>
+                    </select>
                 </td>
             </tr>
-                <td>
-                    Category :</td>
-                <td><input type="text" name="category" value="{{ $list['category']}}"></td>
-                </td>
+            <td>
+                Category :
+            <td>
+                <select name="category" id="category">
+                    <option value="Grocery" @if($list['category']=='Grocery' ) selected @endif> Grocery </option>
+                    <option value="Medical" @if($list['category']=='Medical' ) selected @endif>Medical </option>
+                    <option value="Stationary" @if($list['category']=='Stationary' ) selected @endif>Stationary </option>
+                </select>
+            </td>
             </tr>
             <tr>
                 <td><input type="submit" name="submit" value="Save"></td>

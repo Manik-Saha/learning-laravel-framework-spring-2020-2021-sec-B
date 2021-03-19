@@ -19,7 +19,7 @@
                 <td>unit_price : {{ $list['unit_price'] }}</td>
             </tr>
             <tr>
-                <td>status : {{ $list['status'] }}</>td>
+                <td>status : {{ $list['status'] }}</td>
             </tr>
                 <td>
                     Category : {{ $list['category']}}</td>
