@@ -118,9 +118,15 @@ class ProductController extends Controller
         return view('product.delete')->with('list', $product);
     }
 
-    public function destroy(Product $product)
+    public function destroy($product_id, Request $req)
     {
-        //
+        if(product::destroy($product_id)){
+            $req->session()->flash('msg', 'Deleted successfully');
+            return redirect()->route('product.existing');
+        }
+        else{
+
+        }
     }
 
     public function details($product_id,$vendor_id){

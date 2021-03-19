@@ -10,6 +10,7 @@
 
 <body>
     <form method="post">
+    @csrf
         <table>
             <tr>
                 <td>
