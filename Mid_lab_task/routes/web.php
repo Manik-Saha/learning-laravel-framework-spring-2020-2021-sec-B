@@ -57,10 +57,10 @@ Route::group(['middleware'=> 'session'], function(){
 
     Route::post('system/product_management/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class, 'details'])->name('details');
     Route::get('/system/product_management/upcoming_product', [ProductController::class, 'upcoming'])->name('product.upcoming');
-    Route::get('/system/product_management/upcoming_product/edit/{product_id}', [ProductController::class, 'upcomingedit'])->name('product.existing.edit');
+    Route::get('/system/product_management/upcoming_product/edit/{product_id}', [ProductController::class, 'upcomingedit'])->name('product.upcoming.edit');
     Route::post('/system/product_management/upcoming_product/edit/{product_id}', [ProductController::class, 'upcomingstore']);
-    Route::get('/system/product_management/product/{product_id}', [ProductController::class, 'upcomingdetails'])->name('product.existing.details');
-    Route::get('/system/product_management/upcoming_product/delete/{product_id}', [ProductController::class, 'upcomingdelete'])->name('product.existing.delete');
+    Route::get('system/product_management/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class, 'upcomingdetails'])->name('product.upcoming.details');
+    Route::get('/system/product_management/upcoming_product/delete/{product_id}', [ProductController::class, 'upcomingdelete'])->name('product.upcoming.delete');
     Route::post('/system/product_management/upcoming_product/delete/{product_id}', [ProductController::class, 'upcomingdestroy']);
 
     Route::get('/system/product_management/add_product', [ProductController::class, 'create'])->name('product.add');

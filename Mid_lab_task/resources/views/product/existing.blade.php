@@ -28,7 +28,7 @@
             @for($i=0; $i < count($list); $i++) <tr>
                 @if($list[$i]['status']=='Existing')
                 <td> <a href="{{ route('product.existing.edit', [$list[$i]['product_id']]) }}">Edit</a></td>
-                <td> <a href="{{ route('product.existing.details', [$list[$i]->product_id])}}">Details</a></td>
+                <td> <a href="/system/product_management/product/{{ $list[$i]->product_id }}/vendor_details/{{ $list[$i]->vendor_id }}}">Details</a></td>
                 <td> <a href="{{ route('product.existing.delete', [$list[$i]->product_id]) }}">Delete</a></td>
                 <td>{{$list[$i]['product_id']}}</td>
                 <td>{{$list[$i]['product_name']}}</td>

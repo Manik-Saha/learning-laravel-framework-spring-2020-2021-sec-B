@@ -18,7 +18,7 @@
                 </td>
             </tr>
             <tr>
-            <td>Vendor ID : {{ $list[0]->user_id }}</td>
+            <td>Vendor ID : {{ $list[0]->vendor_id }}</td>
             </tr>
             <tr>
             <td>Vendor Name : {{ $list[0]->vendor_name }}</td>

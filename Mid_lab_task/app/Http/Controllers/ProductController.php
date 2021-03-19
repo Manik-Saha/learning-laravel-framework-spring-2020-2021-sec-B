@@ -75,7 +75,7 @@ class ProductController extends Controller
 
         if($req->unit_price <=0){
             $req->session()->flash('msg', 'Unit price must be greater than 0');
-            return redirect()->route('product.existing.edit',$product_id);
+            return redirect()->route('product.upcoming.edit',$product_id);
         }
         else{
             $date = date('Y-m-d H:i:s');
@@ -90,7 +90,7 @@ class ProductController extends Controller
     
             $product->save();
             $req->session()->flash('msg', 'updated successfully');
-            return redirect()->route('product.existing.edit',$product_id);
+            return redirect()->route('product.upcoming.edit',$product_id);
         }
 
     }
@@ -168,14 +168,14 @@ class ProductController extends Controller
     {
         if(product::destroy($product_id)){
             $req->session()->flash('msg', 'Deleted successfully');
-            return redirect()->route('product.existing');
+            return redirect()->route('product.upcoming');
         }
         else{
 
         }
     }
 
-    public function details($product_id){
+    public function details($product_id, $vendor_id){
         $list = DB::table('product')
                 ->join('vendor', 'product.product_id', '=', 'vendor.product_id')
                 ->select('product.*', 'vendor.*')
@@ -185,7 +185,7 @@ class ProductController extends Controller
 
     }
 
-    public function upcomingdetails($product_id){
+    public function upcomingdetails($product_id, $vendor_id){
         $list = DB::table('product')
                 ->join('vendor', 'product.product_id', '=', 'vendor.product_id')
                 ->select('product.*', 'vendor.*')
