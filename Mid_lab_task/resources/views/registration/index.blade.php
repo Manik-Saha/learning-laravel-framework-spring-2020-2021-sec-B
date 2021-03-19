@@ -9,6 +9,11 @@
 </head>
 
 <body>
+<p style="color: red; font-size: 15px;"> @foreach($errors->all() as $err)
+		{{$err}} <br>
+	@endforeach </p>
+
+    <p style="color: red; font-size: 15px;">{{session('msg')}}</p>
     <form method="post">
         @csrf
         <table>
@@ -98,16 +103,13 @@
                         <option> </option>
                         <option value="customer">Customer</option>
                         <option value="accoutant">Accounant</option>
-                        <option value="Sales&marketing">Sales & Marketing person</option>
+                        <option value="sales & marketing">Sales & Marketing person</option>
                     </select>
                 </td>
             </tr>
         </table>
         <input type="submit" name="submit" value="Save">
     </form>
-    @foreach($errors->all() as $err)
-    {{$err}} <br>
-    @endforeach
 </body>
 
 </html>
