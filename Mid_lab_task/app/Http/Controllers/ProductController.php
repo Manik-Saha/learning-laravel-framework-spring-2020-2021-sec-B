@@ -47,8 +47,31 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($product_id, ProductEditRequest $req)
-    {
+    public function store($product_id, ProductEditRequest $req) {
+
+        if($req->unit_price <=0){
+            $req->session()->flash('msg', 'Unit price must be greater than 0');
+            return redirect()->route('product.existing.edit',$product_id);
+        }
+        else{
+            $date = date('Y-m-d H:i:s');
+        
+            $product = Product::find($product_id);
+    
+            $product->product_name = $req->product_name;
+            $product->category = $req->category;
+            $product->unit_price = $req->unit_price;
+            $product->status = $req->status;
+            $product->updated_at = $date;
+    
+            $product->save();
+            $req->session()->flash('msg', 'updated successfully');
+            return redirect()->route('product.existing.edit',$product_id);
+        }
+
+    }
+
+    public function upcomingstore($product_id, ProductEditRequest $req) {
 
         if($req->unit_price <=0){
             $req->session()->flash('msg', 'Unit price must be greater than 0');
@@ -95,6 +118,13 @@ class ProductController extends Controller
         return view('product.edit')->with('list', $product);
     }
 
+    public function upcomingedit($id)
+    {
+        $product = Product::find($id);
+        return view('product.edit')->with('list', $product);
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -118,6 +148,11 @@ class ProductController extends Controller
         return view('product.delete')->with('list', $product);
     }
 
+    public function upcomingdelete($id){
+        $product = Product::find($id);
+        return view('product.delete')->with('list', $product);
+    }
+
     public function destroy($product_id, Request $req)
     {
         if(product::destroy($product_id)){
@@ -129,12 +164,34 @@ class ProductController extends Controller
         }
     }
 
-    public function details($product_id,$vendor_id){
+    public function upcomingdestroy($product_id, Request $req)
+    {
+        if(product::destroy($product_id)){
+            $req->session()->flash('msg', 'Deleted successfully');
+            return redirect()->route('product.existing');
+        }
+        else{
+
+        }
+    }
+
+    public function details($product_id){
         $list = DB::table('product')
                 ->join('vendor', 'product.product_id', '=', 'vendor.product_id')
                 ->select('product.*', 'vendor.*')
                 ->get();
-         return view('product.delete')->with('list', $list);
+            
+         return view('product.details')->with('list', $list);
+
+    }
+
+    public function upcomingdetails($product_id){
+        $list = DB::table('product')
+                ->join('vendor', 'product.product_id', '=', 'vendor.product_id')
+                ->select('product.*', 'vendor.*')
+                ->get();
+            
+         return view('product.details')->with('list', $list);
 
     }
 }

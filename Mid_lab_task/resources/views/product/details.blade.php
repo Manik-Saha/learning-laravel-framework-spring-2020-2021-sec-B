@@ -5,45 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Existing Product</title>
+    <title>Details Existing Product</title>
 </head>
 
 <body>
+<h1>Details Existing Product</h1>
     <form method="post">
         <table>
             <tr>
                 <td>
-                    Product ID : {{ $list['product_id'] }}
+                    Product ID : {{ $list[0]->product_id }}
                 </td>
             </tr>
             <tr>
-            <td>Vendor ID : {{ $list['vendor_id'] }}</td>
+            <td>Vendor ID : {{ $list[0]->user_id }}</td>
             </tr>
             <tr>
-            <td>Vendor Name : {{ $list['vendor_name'] }}</td>
+            <td>Vendor Name : {{ $list[0]->vendor_name }}</td>
             </tr>
             <tr>
             <td>
-            Vendor address : {{ $list['vendor_address']}}
+            Vendor address : {{ $list[0]->vendor_address}}
             </td>
             </tr>
             <tr>
-            <td>E-mail : {{ $list['email'] }}</td>
+            <td>E-mail : {{ $list[0]->email }}</td>
             </tr>
             <tr>
                 <td>
-                    Product name : {{ $list['product_name'] }}
+                    Product name : {{ $list[0]->product_name }}
                 </td>
             </tr>
             <tr>
-            <td>unit_price : {{ $list['unit_price'] }}</td>
+            <td>unit_price : {{ $list[0]->unit_price }}</td>
             </tr>
             <tr>
-                <td>status : {{ $list['status'] }}</>td>
+                <td>status : {{ $list[0]->status }}</td>
             </tr>
             <tr>
             <td>
-                Category : {{ $list['category']}}</td>
+                Category : {{ $list[0]->category}}</td>
             </td>
             </tr>
         </table>

@@ -51,11 +51,18 @@ Route::group(['middleware'=> 'session'], function(){
     Route::get('/system/product_management/existing_product', [ProductController::class, 'existing'])->name('product.existing');
     Route::get('/system/product_management/existing_product/edit/{product_id}', [ProductController::class, 'edit'])->name('product.existing.edit');
     Route::post('/system/product_management/existing_product/edit/{product_id}', [ProductController::class, 'store']);
-    Route::get('/system/product_management/existing_product/details/{product_id}', [ProductController::class, 'details'])->name('product.existing.details');
+    Route::get('/system/product_management/product/{product_id}', [ProductController::class, 'details'])->name('product.existing.details');
     Route::get('/system/product_management/existing_product/delete/{product_id}', [ProductController::class, 'delete'])->name('product.existing.delete');
     Route::post('/system/product_management/existing_product/delete/{product_id}', [ProductController::class, 'destroy']);
+
     Route::post('system/product_management/product/{product_id}/vendor_details/{vendor_id}', [ProductController::class, 'details'])->name('details');
     Route::get('/system/product_management/upcoming_product', [ProductController::class, 'upcoming'])->name('product.upcoming');
+    Route::get('/system/product_management/upcoming_product/edit/{product_id}', [ProductController::class, 'upcomingedit'])->name('product.existing.edit');
+    Route::post('/system/product_management/upcoming_product/edit/{product_id}', [ProductController::class, 'upcomingstore']);
+    Route::get('/system/product_management/product/{product_id}', [ProductController::class, 'upcomingdetails'])->name('product.existing.details');
+    Route::get('/system/product_management/upcoming_product/delete/{product_id}', [ProductController::class, 'upcomingdelete'])->name('product.existing.delete');
+    Route::post('/system/product_management/upcoming_product/delete/{product_id}', [ProductController::class, 'upcomingdestroy']);
+
     Route::get('/system/product_management/add_product', [ProductController::class, 'create'])->name('product.add');
     Route::post('/system/product_management/add_product', [ProductController::class, 'store']);
 });

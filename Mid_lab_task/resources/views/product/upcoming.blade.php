@@ -13,6 +13,9 @@
     <a href="/logout">Logout</a>
     <table border="1">
         <tr>
+            <td>Edit</td>
+            <td>Details</td>
+            <td>Delete</td>
             <td>product ID</td>
             <td>Product name</td>
             <td>Category</td>
@@ -21,8 +24,11 @@
             <td>Status update time</td>
         </tr>
         @for($i=0; $i < count($list); $i++) <tr>
-           @if($list[$i]['status']=='Upcoming')
-            <td>{{$list[$i]['pruduct_id']}}</td>
+            @if($list[$i]['status']=='Upcoming')
+            <td> <a href="{{ route('product.existing.edit', [$list[$i]['product_id']]) }}">Edit</a></td>
+            <td> <a href="{{ route('product.existing.details', [$list[$i]->product_id])}}">Details</a></td>
+            <td> <a href="{{ route('product.existing.delete', [$list[$i]->product_id]) }}">Delete</a></td>
+            <td>{{$list[$i]['product_id']}}</td>
             <td>{{$list[$i]['product_name']}}</td>
             <td>{{$list[$i]['category']}}</td>
             <td>{{$list[$i]['unit_price']}}</td>
@@ -31,7 +37,7 @@
             <td>
             </td>
             </tr>
-              @endif
+            @endif
             @endfor
     </table>
 </body>
