@@ -9,6 +9,12 @@
 </head>
 
 <body>
+<p style="color: red; font-size: 15px;"> @foreach($errors->all() as $err)
+		{{$err}} <br>
+	@endforeach </p>
+
+    <p style="color: red; font-size: 15px;">{{session('msg')}}</p>
+<center>
     <h1>Add new product</h1>
     <form method="post">
     @csrf
@@ -50,6 +56,7 @@
             <input type="submit" name="submit" value="Save">
         </fieldset>
     </form>
+    </center>
 </body>
 
 </html>

@@ -71,6 +71,30 @@ class ProductController extends Controller
 
     }
 
+    public function Newstore(ProductEditRequest $req) {
+
+        if($req->unit_price <=0){
+            $req->session()->flash('msg', 'Unit price must be greater than 0');
+            return redirect()->route('product.add');
+        }
+        else{
+            $date = date('Y-m-d H:i:s');
+        
+            $product = new Product();
+    
+            $product->product_name = $req->product_name;
+            $product->category = $req->category;
+            $product->unit_price = $req->unit_price;
+            $product->status = $req->status;
+            $product->updated_at = $date;
+    
+            $product->save();
+            $req->session()->flash('msg', 'Added successfully');
+            return redirect()->route('product.add');
+        }
+
+    }
+
     public function upcomingstore($product_id, ProductEditRequest $req) {
 
         if($req->unit_price <=0){

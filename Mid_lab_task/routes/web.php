@@ -64,6 +64,6 @@ Route::group(['middleware'=> 'session'], function(){
     Route::post('/system/product_management/upcoming_product/delete/{product_id}', [ProductController::class, 'upcomingdestroy']);
 
     Route::get('/system/product_management/add_product', [ProductController::class, 'create'])->name('product.add');
-    Route::post('/system/product_management/add_product', [ProductController::class, 'store']);
+    Route::post('/system/product_management/add_product', [ProductController::class, 'Newstore']);
 });
 
